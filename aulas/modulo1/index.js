@@ -9,6 +9,7 @@ nunjucks.configure("views", {
   watch: true
 });
 
+app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "njk");
 
 const users = ["Edison", "Ferraz", "Meira"];
@@ -19,6 +20,11 @@ app.get("/", (req, res) => {
 
 app.get("/new", (req, res) => {
   return res.render("new");
+});
+
+app.post("/create", (req, res) => {
+  users.push(req.body.user);
+  res.redirect("/");
 });
 
 app.listen(3000);
