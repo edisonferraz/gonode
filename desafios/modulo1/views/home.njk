@@ -1,0 +1,8 @@
+<form action="/check" method="POST">
+  <input type="number" name="age" placeholder="Digite sua idade" {% if age %} required {% endif %}>
+  <button type="submit">Verificar</button>
+</form>
+
+{% if age %}
+  <p><strong>É necessário digitar uma idade</strong></p>
+{% endif %}
