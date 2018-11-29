@@ -23,11 +23,11 @@ class App {
       autoescape: true
     })
 
-    this.express('view engine', 'njk')
+    this.express.set('view engine', 'njk')
   }
 
   routes () {
-    //
+    this.express.use(require('./routes'))
   }
 }
 
