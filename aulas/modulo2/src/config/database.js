@@ -1,6 +1,6 @@
 module.exports = {
   dialect: 'mysql',
-  host: 'locahost',
+  host: 'localhost',
   username: 'root',
   password: '',
   database: 'gonode_modulo2',
