@@ -167,6 +167,25 @@ body {
   background: #c15858;
 }
 
+.main-wrapper .content a.back {
+  background: #ddd;
+  text-decoration: none;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  border: 0;
+  color: #666;
+}
+
+.main-wrapper .content a.back:hover {
+  background: #7159c1;
+  color: #fff;
+}
+
 .main-wrapper .content p {
   font-size: 14px;
   color: #666;
@@ -200,9 +219,13 @@ ul.providers {
   justify-content: space-between;
 }
 
+.provider.active {
+  border: 2px solid #666;
+  background-color: #eee;
+}
+
 .provider div {
   display: flex;
-  align-items: center;
 }
 
 .provider img {
@@ -211,12 +234,27 @@ ul.providers {
   border-radius: 50%;
 }
 
-.provider strong {
+.provider .info {
   margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.provider .info strong {
   color: #444;
 }
 
-.provider a {
+.provider .info .schedules-today {
+  font-size: 13px;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.provider .info .schedules-today:hover {
+  text-decoration: underline;
+}
+
+.provider .btn-schedule {
   background: #7159c1;
   padding: 5px 10px;
   font-weight: bold;

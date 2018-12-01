@@ -7,12 +7,18 @@
 
     <ul class="providers">
       {% for provider in providers %}
-        <li class="provider">
+        <li class="provider {% if user.id == provider.id %}active{% endif %}">
           <div>
             <img src="/files/{{ provider.avatar }}">
-            <strong>{{ provider.name }}</strong>
+            <div class="info">
+              <strong>{{ provider.name }}</strong>
+
+              {% if user.id == provider.id and user.provider == true %}
+              <a class="schedules-today" href="/app/schedule">Agendamentos para hoje</a>
+              {% endif %}
+            </div>
           </div>
-          <a href="/app/appointments/new/{{ provider.id }}">+</a>
+          <a class="btn-schedule" href="/app/appointments/new/{{ provider.id }}">+</a>
         </li>
       {% endfor %}
     </ul>
