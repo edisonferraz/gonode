@@ -13,19 +13,7 @@ class UserController {
   }
 
   async update ({ request, response, auth }) {
-    const {
-      username,
-      password,
-      newPassword,
-      newPasswordConfirmation
-    } = request.all()
-
-    const verifyNewPasswordMatch = newPassword === newPasswordConfirmation
-    if (!verifyNewPasswordMatch) {
-      return response.status(400).send({
-        error: { message: 'The new password dont match, please retry' }
-      })
-    }
+    const { username, password, newPassword } = request.all()
 
     const user = await auth.getUser()
     const verifyPassword = await Hash.verify(password, user.password)
