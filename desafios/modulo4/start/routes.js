@@ -16,4 +16,6 @@ Route.group(() => {
         [['events.update'], ['Event/Update']]
       ])
     )
+
+  Route.post('events/:id/share', 'ShareController.create').validator('Share')
 }).middleware('auth')
