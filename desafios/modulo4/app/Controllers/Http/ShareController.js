@@ -1,6 +1,7 @@
 'use strict'
 
-const Mail = use('Mail')
+const Kue = use('Kue')
+const Job = use('App/Jobs/ShareEventMail')
 const Event = use('App/Models/Event')
 
 const moment = require('moment')
@@ -14,12 +15,13 @@ class ShareController {
     event.time = moment(event.date).format('HH:mm:ss')
     event.date = moment(event.date).format('DD/MM/YYYY')
 
-    await Mail.send(['emails.share_event'], { username, event }, message => {
-      message
-        .to(email)
-        .from('edisonferraz@gmail.com', 'Edison Ferraz')
-        .subject(`${username} compartilhou um evento com você`)
-    })
+    Kue.dispatch(
+      Job.key,
+      { email, username, event },
+      {
+        attempts: 3
+      }
+    )
   }
 }
 
